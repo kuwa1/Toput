@@ -1,7 +1,9 @@
-version: 0.2
-env:
-  variables:
+version: 0.1
+ 
 phases:
+  install:
+    runtime-versions: # ビルドを実行する環境のランタイム情報
+      docker: 18
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
