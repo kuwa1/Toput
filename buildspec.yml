@@ -4,10 +4,11 @@ phases:
   install:
     runtime-versions: # ビルドを実行する環境のランタイム情報
       docker: 18
-  pre_build:
-    commands:
+    pre_build:
+    commands: # ECRへのログイン
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
   build:
     commands:
       - echo Build started on `date`
