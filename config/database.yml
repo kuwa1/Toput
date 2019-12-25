@@ -19,10 +19,9 @@ default: &default
 
 production:
   <<: *default
-  host: database-1.c31igkafwagt.ap-northeast-1.rds.amazonaws.com
-  database: database-1
-  username: kuwa
-  password: kuwa3444
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
